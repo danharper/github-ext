@@ -109,6 +109,8 @@ const changeReviewStatus = (to, onUpdate) => {
 }
 
 function prReviewButtons() {
+	if (document.getElementById('pr-review-ext-container')) return;
+	
 	const container = document.createElement('div')
 	container.innerHTML = TEMPLATE
 	document.querySelector('.merge-pr-more-commits').insertAdjacentElement('afterend', container)
@@ -134,7 +136,7 @@ function prReviewButtons() {
 	update()
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {	
 	gitHubInjection(window, function () {
 		prReviewButtons()
 	})
